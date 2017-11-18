@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<%@page pageEncoding="utf-8"%>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="/js/bootstrap.min.js" type="text/javascript"></script>
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModal">
+    <div class="modal-dialog" role="document">
+        <form method="post" id="addForm" name="addForm" action="update">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">添加题目</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <span>题号</span>
+                        <input type="number" class="form-control" id="newId" name="newId" readonly="readonly">
+                    </div>
+
+                    <div class="form-group">
+                        <span>题目</span>
+                        <input type="text" class="form-control" id="newTitle" name="newTitle" placeholder="题目">
+                    </div>
+
+                    <div class="form-group">
+                        题目类型
+                        <select class="form-control" id="question_type" name="question_type" onchange="getChange()">
+                            <option value="select">选择题</option>
+                            <option value="tf">判断题</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="addSelect">
+                        <label>选中单选按钮作为答案</label><br/>
+                        <label><input type="radio" name="answer" value="a">
+                            选项A.</label><input type="text" class="form-control" id="newA" name="newA"
+                                               placeholder="选项A">
+                        <label><input type="radio" name="answer" value="b">
+                            选项B.</label><input type="text" class="form-control" id="newB" name="newB"
+                                               placeholder="选项B">
+                        <label><input type="radio" name="answer" value="c">
+                            选项C.</label><input type="text" class="form-control" id="newC" name="newC"
+                                               placeholder="选项C">
+
+                        <label><input type="radio" name="answer" value="d">
+                            选项D.</label><input type="text" class="form-control" id="newD" name="newD"
+                                               placeholder="选项D">
+                    </div>
+
+                    <div class="form-group" id="addTf">
+                        <label>选中单选按钮作为答案</label><br/>
+                        <label><input type="radio" name="answer" value="yes">
+                            正确</label>
+                        <label><input type="radio" name="answer" value="no">
+                            错误</label>
+                    </div>
+
+                    <div class="form-group">
+                        分值
+                        <input type="number" class="form-control" id="score" name="score">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" onclick="sub();">保存</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
