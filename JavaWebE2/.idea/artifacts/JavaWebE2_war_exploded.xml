@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="JavaWebE2:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/JavaWebE2_war_exploded</output-path>
+    <root id="archive" name="JavaWebE2_war exploded.war">
+      <element id="javaee-facet-resources" facet="JavaWebE2/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="JavaWebE2" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="mysql-connector-java-5.1" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
