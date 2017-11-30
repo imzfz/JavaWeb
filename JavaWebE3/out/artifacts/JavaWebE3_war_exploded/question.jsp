@@ -10,16 +10,17 @@
 <html>
 <head>
     <title>欢迎答题</title>
+    <script src="/js/jquery-3.2.1.min.js" type="text/javascript"></script>
     <script src="/js/bootstrap.min.js" type="text/javascript"></script>
     <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div class="container">
     <c:if test="${requestScope.ql != null}">
-        <form method="post" action="result.jsp">
+        <form method="post" action="result">
             <div class="panel panel-info">
                 <div class="panel-heading">用户:<%=session.getAttribute("user")%>
-                    <a href="exit.jsp">退出</a>
+                    <a href="/logout">退出</a>
                 </div>
                 <div class="panel-body">
                     <c:forEach items="${requestScope.ql}" var="question">
@@ -72,9 +73,9 @@
                                 </li>
                             </ul>
                         </c:if>
+                        <input type="hidden" name="totalId" value="${requestScope.get("totalNum")}">
                     </c:forEach>
                         <%--<%session.setAttribute("count", question.getQuestionMap().size());%>--%>
-                        <%--<%session.setAttribute("id", q.getid);%>--%>
                     <ul>
                         <li style="list-style-type: none">
                             <p></p>

@@ -55,7 +55,7 @@ public class ChoiceList implements ChoiceDAO{
     }
 
     @Override
-    public boolean addChoice(Question question, Select select) {
+    public boolean addChoice(Question question, Select select) throws Exception{
         try {
             String t = question.getId();
             System.out.println("idddd " + t);
@@ -76,12 +76,56 @@ public class ChoiceList implements ChoiceDAO{
     }
 
     @Override
-    public boolean delChoice(int id) {
+    public boolean delChoice(String id) throws Exception{
+        try {
+            connection = new DBConnection().connection();
+            statement = connection.createStatement();
+            statement.execute("DELETE FROM Choice" + " WHERE qid='" + id + "'");
+            statement.close();
+            return true;
+        }catch (Exception e){
+            System.out.println("添加失败");
+            e.printStackTrace();
+        }
         return false;
     }
 
     @Override
-    public boolean updateChoice(int id) {
+    public boolean updateChoice(Question question, Select select) throws Exception{
+        try {
+            connection = new DBConnection().connection();
+            statement = connection.createStatement();
+            statement.execute("UPDATE Choice SET choiceA='" + select.getChoiceA() +
+                    "', choiceB='" + select.getChoiceB() +
+                    "', choiceC='" + select.getChoiceC() +
+                    "', choiceD='" + select.getChoiceD() +
+                    "', choiceYes=NULL, " + "choiceNo=NULL" +
+                    ", `type`='" + "select" + "' WHERE qid='" + question.getId() + "'");
+            statement.close();
+            return true;
+        }catch (Exception e){
+            System.out.println("删除失败");
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean updateChoice(Question question, TrueOrFalse trueOrFalse) {
+        try {
+            connection = new DBConnection().connection();
+            statement = connection.createStatement();
+            statement.execute("UPDATE Choice SET choiceYes='" + "对" +
+                    "', choiceNo='" + "错" +
+                    "', `type`='" + "tf" +
+                    "', choiceA=NULL, " + "choiceB=NULL, " + "choiceC=NULL, " + "choiceD=NULL " +
+                    " WHERE qid='" + question.getId() + "'");
+            statement.close();
+            return true;
+        }catch (Exception e){
+            System.out.println("添加失败");
+            e.printStackTrace();
+        }
         return false;
     }
 

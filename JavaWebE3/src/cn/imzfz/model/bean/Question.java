@@ -10,16 +10,23 @@ public class Question {
     private String type = "";
     private String answer = "";
 
-    public Question(String id, String title, String score, String type){
+    public Question(String id, String title, String score, String answer, String type){
         this.id = id;
         this.title = title;
         this.score = score;
         this.type = type;
+        this.answer = answer;
     }
 
     public Question(String title, String score, String answer){
         this.title = title;
         this.score = score;
+        this.answer = answer;
+    }
+
+    public Question(String id, int score, String answer){
+        this.title = id;
+        this.score = score + "";
         this.answer = answer;
     }
 

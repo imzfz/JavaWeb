@@ -11,7 +11,7 @@
 <body>
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModal">
     <div class="modal-dialog" role="document">
-        <form method="post" id="addForm" name="addForm" action="update">
+        <form method="post" id="addForm" name="addForm" action="insert">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
@@ -23,6 +23,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <span>题号</span>
+                        <!--题号自动生成，不允许修改-->
                         <input type="number" class="form-control" id="newId" name="newId" readonly="readonly">
                     </div>
 
@@ -33,7 +34,8 @@
 
                     <div class="form-group">
                         题目类型
-                        <select class="form-control" id="question_type" name="question_type" onchange="getChange()">
+                        <!--根据题目类型显示/隐藏-->
+                        <select class="form-control" id="question_type" name="question_type" onchange="loadjs()">
                             <option value="select">选择题</option>
                             <option value="tf">判断题</option>
                         </select>
@@ -77,5 +79,79 @@
         </form>
     </div>
 </div>
+
+
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="addModal">
+    <div class="modal-dialog" role="document">
+        <form method="post" id="updateForm" name="updateForm" action="update">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">修改题目</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <span>题号</span>
+                        <!--题号自动生成，不允许修改-->
+                        <input type="number" class="form-control" id="updateId" name="newId" readonly="readonly">
+                    </div>
+
+                    <div class="form-group">
+                        <span>题目</span>
+                        <input type="text" class="form-control" id="updateTitle" name="newTitle" placeholder="题目">
+                    </div>
+
+                    <div class="form-group">
+                        题目类型
+                        <!--根据题目类型显示/隐藏-->
+                        <select class="form-control" id="update_question_type" name="question_type"
+                                onchange="getChange_update()">
+                            <option value="select">选择题</option>
+                            <option value="tf">判断题</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="updateSelect">
+                        <label>选中单选按钮作为答案</label><br/>
+                        <label><input type="radio" id="answer_a" name="answer" value="a">
+                            选项A.</label><input type="text" class="form-control" id="updateA" name="newA"
+                                               placeholder="选项A">
+                        <label><input type="radio" id="answer_b" name="answer" value="b">
+                            选项B.</label><input type="text" class="form-control" id="updateB" name="newB"
+                                               placeholder="选项B">
+                        <label><input type="radio" id="answer_c" name="answer" value="c">
+                            选项C.</label><input type="text" class="form-control" id="updateC" name="newC"
+                                               placeholder="选项C">
+
+                        <label><input type="radio" id="answer_d" name="answer" value="d">
+                            选项D.</label><input type="text" class="form-control" id="updateD" name="newD"
+                                               placeholder="选项D">
+                    </div>
+
+                    <div class="form-group" id="updateTf">
+                        <label>选中单选按钮作为答案</label><br/>
+                        <label><input type="radio" id="answer_yes" name="answer" value="yes">
+                            正确</label>
+                        <label><input type="radio" id="answer_no" name="answer" value="no">
+                            错误</label>
+                    </div>
+
+                    <div class="form-group">
+                        分值
+                        <input type="number" class="form-control" id="updateScore" name="score">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" onclick="subUpdate();">保存</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 </body>
 </html>

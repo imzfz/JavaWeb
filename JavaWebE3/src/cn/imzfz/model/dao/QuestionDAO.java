@@ -9,8 +9,8 @@ import java.util.Map;
  */
 public interface QuestionDAO {
     void initQuestion();
-    boolean addQuestion(Question question);
-    boolean delQuestion(int id);
-    boolean updateQuestion(int id);
+    boolean addQuestion(Question question) throws Exception;
+    boolean delQuestion(String id) throws Exception;
+    boolean updateQuestion(Question question) throws Exception;
     Map<String, Question> getQuestionMap();
 }

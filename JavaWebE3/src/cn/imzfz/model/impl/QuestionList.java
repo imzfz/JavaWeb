@@ -34,7 +34,7 @@ public class QuestionList implements QuestionDAO{
             ResultSet res = statement.executeQuery("SELECT * from " + TABLE + " ORDER by qid ASC");
             while(res.next()){
                 question = new Question(res.getString(1), res.getString(2),
-                        res.getString(3), res.getString(4));
+                        res.getString(3), res.getString(4), res.getString(5));
                 questionMap.put(res.getString(1), question);
             }
             System.out.println("question list");
@@ -46,8 +46,8 @@ public class QuestionList implements QuestionDAO{
     }
 
     @Override
-    public boolean addQuestion(Question question) {
-        try {
+    public boolean addQuestion(Question question) throws Exception{
+//        try {
             connection = new DBConnection().connection();
             statement = connection.createStatement();
             statement.execute("INSERT INTO Question_title(qid, qtitle, qscore, ans) VALUES ('"+
@@ -58,20 +58,43 @@ public class QuestionList implements QuestionDAO{
                     "')");
             statement.close();
             return true;
-        }catch (Exception e){
+    /*    }catch (Exception e){
+
             System.out.println("添加失败");
+            e.printStackTrace();
+        }
+        return false;
+*/    }
+
+    @Override
+    public boolean delQuestion(String id) throws Exception{
+        try {
+            connection = new DBConnection().connection();
+            statement = connection.createStatement();
+            statement.execute("DELETE FROM Question_title WHERE qid = '" + id + "'");
+            statement.close();
+            return true;
+        }catch (Exception e){
+            System.out.println("删除失败");
             e.printStackTrace();
         }
         return false;
     }
 
     @Override
-    public boolean delQuestion(int id) {
-        return false;
-    }
-
-    @Override
-    public boolean updateQuestion(int id) {
+    public boolean updateQuestion(Question question) throws Exception{
+        try {
+            connection = new DBConnection().connection();
+            statement = connection.createStatement();
+            statement.execute("UPDATE Question_title SET qtitle='" + question.getTitle() +
+                    "', qscore='" + question.getScore() + "', ans='" + question.getAnswer() +
+                    "' WHERE qid='" + question.getId() + "'");
+            statement.close();
+            return true;
+        }catch (Exception e){
+            System.out.println("更新失败");
+            e.printStackTrace();
+        }
         return false;
     }
 

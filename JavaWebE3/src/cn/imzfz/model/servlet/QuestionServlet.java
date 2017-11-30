@@ -27,6 +27,7 @@ public class QuestionServlet extends HttpServlet {
         choice.initChoice();
         System.out.println("Question servlet");
         req.setAttribute("ql", ql.getQuestionMap());
+        req.setAttribute("totalNum", ql.getQuestionMap().size());
         req.setAttribute("cho", choice.getList());
         if(req.getRequestURI().equals("/question")) {
             req.getRequestDispatcher("/question.jsp").forward(req, resp);

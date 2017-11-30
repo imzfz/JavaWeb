@@ -13,8 +13,9 @@ import java.util.Map;
 public interface ChoiceDAO {
     void initChoice();
     Map<String, Object> getList();
-    boolean addChoice(Question question, Select select);
-    boolean addChoice(Question question, TrueOrFalse trueOrFalse);
-    boolean delChoice(int id);
-    boolean updateChoice(int id);
+    boolean addChoice(Question question, Select select) throws Exception;
+    boolean addChoice(Question question, TrueOrFalse trueOrFalse) throws Exception;
+    boolean delChoice(String id) throws Exception;
+    boolean updateChoice(Question question, Select select) throws Exception;
+    boolean updateChoice(Question question, TrueOrFalse trueOrFalse) throws Exception;
 }

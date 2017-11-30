@@ -32,7 +32,29 @@
 
     <servlet-mapping>
         <servlet-name>update</servlet-name>
+        <url-pattern>/insert</url-pattern>
         <url-pattern>/update</url-pattern>
+        <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>logout</servlet-name>
+        <servlet-class>cn.imzfz.model.servlet.LogoutServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>result</servlet-name>
+        <servlet-class>cn.imzfz.model.servlet.ResultServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>result</servlet-name>
+        <url-pattern>/result</url-pattern>
     </servlet-mapping>
 
     <filter>
@@ -53,11 +75,16 @@
     <filter-mapping>
         <filter-name>login</filter-name>
         <url-pattern>/</url-pattern>
+        <url-pattern>/editquestion</url-pattern>
+        <url-pattern>/editquestion.jsp</url-pattern>
         <url-pattern>/index.jsp</url-pattern>
         <url-pattern>/question.jsp</url-pattern>
         <url-pattern>/question</url-pattern>
         <url-pattern>/modal.html</url-pattern>
+        <url-pattern>/result</url-pattern>
+        <url-pattern>/result.jsp</url-pattern>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
+
 
 </web-app>
